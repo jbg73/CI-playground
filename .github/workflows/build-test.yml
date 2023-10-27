@@ -15,7 +15,9 @@ jobs:
             
             - name: Install Python
               uses: actions/setup-python@v4
-            - run: pip install -r requirements.text
+            - run: |
+                pip install -r requirements.text
+                pip install -e .
 
             - name: Run Tests
               run: |
