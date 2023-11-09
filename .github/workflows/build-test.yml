@@ -1,0 +1,24 @@
+name: Build & Test
+
+on:
+    push: 
+        branches:
+            - develop
+
+jobs:
+    create_pr:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            
+            - name: Install Python
+              uses: actions/setup-python@v4
+            - run: |
+                pip install -r requirements.text
+                pip install -e .
+
+            - name: Run Tests
+              run: |
+                pytest -v
